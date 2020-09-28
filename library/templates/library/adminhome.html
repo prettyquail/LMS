@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Welcome to Online Library Management System</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#">Home</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" >Book<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="{% url 'addbook' %}">Add Book</a></li>
+        <li><a href="{% url 'viewbook' %}">View Books</a></li>                        
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" >Students<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="{% url 'addstudent' %}">Register Student</a></li>
+        <li><a href="{% url 'viewstudent' %}">View Students</a></li>                        
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" >Issue Book<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="{% url 'issuebook' %}">Issue New Book</a></li>
+        <li><a href="{% url 'viewissuebook' %}">View Issued Books</a></li>                        
+      </ul>
+    </li>
+    <li>
+      <a href="{% url 'logoutadmin' %}">Logout</a>
+    </li>
+   
+  </ul>
+</div>
+<br>
+<br>
+<center><h1 style="background:#ff9933;color:white;padding: 2%;">Hello Admin!</h1></center>
+
+<center><h1 style="background:#9900ff;color:black;padding: 2%;"><i>
+"Libraries store the energy that fuels the imagination. They open up windows to the world and inspire us to explore and achieve, and contribute to improving our quality of life."</i>
+
+<br>
+<br>Sidney Sheldon </h1></center>
+</body>
+</html>

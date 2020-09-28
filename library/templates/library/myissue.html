@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="{% url 'studenthome' %}">Home</a></li>
+    
+    <li><a href="{% url 'logoutstudent' %}">Logout</a></li>
+  </ul>
+</div>
+<br>
+<br>
+<table id="customers">
+  <tr>
+    <th>Enroll No</th>
+    <th>Book Name</th >
+    <th>ISBN.</th>
+     <th>Issue Date</th>
+    <th>Expiry Date</th>
+    <th>Days left</th>
+<tr>
+
+  <tr>
+    <td>{{data.enrollno}}</td>
+   <td> {{data.issuebook}}</td>
+    <td>{{data.bookisbn}}</td>
+    <td>{{data.issuedate}}</td>
+    <td>{{data.expirydate}}</td>
+   <td>{{ data.issuedate|timesince:data.expirydate}}</td>
+  </tr>
+
+</table>
+
+</body>
+</html>

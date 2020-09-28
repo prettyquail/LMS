@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="{% url 'adminhome' %}">Home</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" >Book<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="{% url 'addbook' %}">Add Book</a></li>
+        <li><a href="{% url 'viewbook' %}">View Books</a></li>                        
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" >Students<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="{% url 'addstudent' %}">Register Student</a></li>
+        <li><a href="{% url 'viewstudent' %}">View Students</a></li>                        
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" >Issue Book<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="{% url 'issuebook' %}">Issue New Book</a></li>
+        <li><a href="{% url 'viewissuebook' %}">View Issued Books</a></li>                        
+      </ul>
+    </li>
+    <li>
+      <a href="{% url 'logoutadmin' %}">Logout</a>
+    </li>
+  </ul>
+</div>
+<br>
+<br>
+
+<table id="customers">
+  <tr>
+    <th>Name</th>
+    <th>Author</th>
+    <th>Category</th>
+     <th>ISBN</th>
+    <th>Action</th>
+  </tr>
+  {% for data in books %}
+  <tr>
+    <td>{{data.bookname}}</td>
+     <td> {{data.author}}</td>
+    <td>{{data.category}}</td>
+    <td>{{data.isbn}}</td>
+    <td> <form action="{% url 'deletebook' data.bookid %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+    </form>
+
+    <form action="{% url 'updatebook' data.bookid %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Update">
+    </form>
+</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  
+  .avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  padding:5%;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  background:pink;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+  
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="{% url 'studenthome' %}">Home</a></li>
+    
+   {% if user.issue.issueid %}
+    <li >
+     <a href="{% url 'myissue' user.issue.issueid %}" style="color:blue;">Issue</a>
+      
+    </li>
+    {% endif %}
+    <li>
+      <a href="{% url 'logoutstudent' %}">Logout</a>
+    </li>
+   
+  </ul>
+</div>
+
+<h2 style="text-align:center;background:lightblue;">My Profile</h2>
+
+<div class="card">
+
+  <h1> {{request.user.student.firstname}} {{request.user.student.lastname}}</h1>
+  <p class="title">Branch:- {{request.user.student.branch}}</p>
+  <p>Enroll No:- {{request.user.student.enrollno}}</p>
+</div>
+
+
+</body>
+</html>
